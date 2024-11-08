@@ -1,0 +1,4 @@
+/* Prevent scrolling on the body when modal is open */
+body.modal-open {
+  overflow: hidden;
+}

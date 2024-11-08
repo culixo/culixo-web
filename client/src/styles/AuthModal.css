@@ -1,0 +1,140 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.modal-content {
+  background-color: #5DC358;
+  padding: 4rem 3rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.modal-header {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.modal-tab {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  background-color: #489647;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-tab.active {
+  background-color: white;
+  color: #7CB342;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.social-button svg {
+  margin-right: 0.5rem;
+}
+
+.divider {
+  text-align: center;
+  margin: 1rem 0;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Updated input styles with more specific and forceful rules */
+.modal-content form input,
+.modal-content .name-fields input {
+  margin-bottom: 1rem !important;
+  padding: 10px 10px 10px 9px !important; /* Top Right Bottom Left */
+  border: none !important;
+  border-radius: 5px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.submit-button {
+  background-color: #489647;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.heading {
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.message {
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.name-fields {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0.1rem;
+}
+
+.name-fields input {
+  flex: 1;
+  margin-bottom: 0;
+}

@@ -1,0 +1,99 @@
+.my-profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.my-profile-welcome-message {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.my-profile-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.my-profile-picture-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.my-profile-picture,
+.my-profile-picture-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.my-profile-picture-placeholder {
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  color: #fff;
+}
+
+.my-profile-picture-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.my-profile-picture-container:hover .my-profile-picture-overlay {
+  opacity: 1;
+}
+
+.my-profile-info {
+  flex: 1;
+}
+
+.my-profile-info h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.my-profile-info p {
+  margin-bottom: 5px;
+}
+
+.my-profile-edit-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.my-profile-update-message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.my-profile-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.my-profile-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
