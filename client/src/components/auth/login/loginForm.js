@@ -27,7 +27,7 @@ export default function Login({ onSuccess }) {
   const { user: globaluser, setAuth } = useContext(GlobalContext);
 
   if (globaluser !== null && globaluser.token !== undefined) {
-    router.push("/");
+    router.push("/setting");
     //return <Loading />;
   }
 

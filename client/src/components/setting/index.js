@@ -409,9 +409,10 @@ export default function profile() {
           sx={{
             flex: 1,
             minHeight: "100%",
+            position: "relative",
           }}
         >
-          <Grid item>
+          <Grid item sx={{ position: "relative" }}>
             <Sidebar />
           </Grid>
           <Grid item sx={{ flex: 1 }}>
@@ -448,9 +449,9 @@ export default function profile() {
                     src={
                       file !== null
                         ? URL.createObjectURL(file)
-                        : globalUser.profile
-                        ? globalUser.external
-                          ? globalUser.profile
+                        : globalUser?.profile
+                        ? globalUser?.external
+                          ? globalUser?.profile
                           : `${publicRuntimeConfig.REACT_APP_BUCKET}/profile-pictures/${globalUser?.profile}`
                         : `/assets/sampleUser.jgp`
                     }
