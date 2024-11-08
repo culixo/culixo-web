@@ -288,7 +288,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   //Generate Random Token
   const resetTokenObj = user.createResetPasswordToken();
   await user.save({ validateBeforeSave: false }); //Saving only 2 Fields
-
+  console.log(resetTokenObj);
   //Sending Email
   const homepage = `${process.env.APP_URL}`;
   try {

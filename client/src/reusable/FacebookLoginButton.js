@@ -85,12 +85,12 @@ const FacebookLoginButton = ({ onSuccess }) => {
           </Button>
         )}
         appId={publicRuntimeConfig.REACT_APP_FACEBOOK_APP_ID}
-        fields={"name, email, picture, birthday, gender, timezone"}
+        fields={"name, email, picture"}
         onSuccess={handleLogin}
         onFailure={onFailure}
         //icon={facebookLogo}
 
-        redirectUri='http://localhost:3000/en'
+        redirectUri={publicRuntimeConfig.REACT_APP_FACEBOOK_REDIRECT_URI}
       />
 
       {error.status && (

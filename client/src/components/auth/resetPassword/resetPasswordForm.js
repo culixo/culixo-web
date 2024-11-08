@@ -25,7 +25,7 @@ export default function ResetPasswordForm({ onClose }) {
   const { user: globaluser } = useContext(GlobalContext);
 
   if (globaluser !== null && globaluser.token !== undefined) {
-    router.push("/");
+    router.push("/setting");
     //return <Loading />;
   }
   const [code, setCode] = useState("");
@@ -60,7 +60,7 @@ export default function ResetPasswordForm({ onClose }) {
         password: {
           value: user.password.value,
           error: true,
-          errorMessage: t("emptyPassword"),
+          errorMessage: "Password cannot be empty",
         },
       });
       return;
@@ -71,7 +71,7 @@ export default function ResetPasswordForm({ onClose }) {
         confirmPassword: {
           value: user.confirmPassword.value,
           error: true,
-          errorMessage: t("emptyPassword"),
+          errorMessage: "Password cannot be empty",
         },
       });
       return;
@@ -79,7 +79,7 @@ export default function ResetPasswordForm({ onClose }) {
     if (user.password.value !== user.confirmPassword.value) {
       setError({
         status: true,
-        message: t("passwordMatch"),
+        message: "Password and Confirm Password does not match",
       });
       return;
     }

@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 
 import ForgetPasswordForm from "../forgetPassword/forgetPasswordForm";
-// import GoogleLoginButton from "@/reusable/GoogleLoginButton";
+import GoogleLoginButton from "@/reusable/GoogleLoginButton";
 import FacebookLoginButton from "@/reusable/FacebookLoginButton";
 import { GlobalContext } from "@/context/GlobalContext";
 import axios from "@/utils/axios";
@@ -149,7 +149,7 @@ export default function Login({ onSuccess }) {
       </Grid>
       {/* google login */}
       <Grid item sx={{ width: "100%", mt: "16px" }}>
-        {/* <GoogleLoginButton  onSuccess={onSuccess ? onSuccess : () => {}} /> */}
+        <GoogleLoginButton onSuccess={onSuccess ? onSuccess : () => {}} />
       </Grid>
       <Grid item sx={{ width: "100%", mt: "16px" }}>
         <FacebookLoginButton onSuccess={onSuccess ? onSuccess : () => {}} />
