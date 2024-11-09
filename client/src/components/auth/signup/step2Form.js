@@ -19,7 +19,13 @@ import {
 } from "@mui/icons-material";
 import dataURLtoFile from "@/utils/dataURLtoFile";
 
-export default function Step2Form({ loading, error, errorMessage, onSubmit }) {
+export default function Step2Form({
+  data,
+  loading,
+  error,
+  errorMessage,
+  onSubmit,
+}) {
   const theme = useTheme();
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const [file, setFile] = useState(null);
@@ -51,6 +57,7 @@ export default function Step2Form({ loading, error, errorMessage, onSubmit }) {
   };
   const SubmitHandler = async () => {
     onSubmit({
+      ...data,
       profile: file,
     });
   };

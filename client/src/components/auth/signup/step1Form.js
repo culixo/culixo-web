@@ -15,7 +15,7 @@ import {
 
 import { GlobalContext } from "@/context/GlobalContext";
 import FacebookLoginButton from "@/reusable/FacebookLoginButton";
-//import GoogleLoginButton from "@/reusable/GoogleLoginButton";
+import GoogleLoginButton from "@/reusable/GoogleLoginButton";
 export default function SignupForm1({
   loading,
   error,
@@ -198,7 +198,7 @@ export default function SignupForm1({
       </Grid>
       {/* google login */}
       <Grid item sx={{ width: "100%", mt: "16px" }}>
-        {/* <GoogleLoginButton  onSuccess={onSuccess ? onSuccess : () => {}} /> */}
+        <GoogleLoginButton onSuccess={onSuccess ? onSuccess : () => {}} />
       </Grid>
       <Grid item sx={{ width: "100%", mt: "16px" }}>
         <FacebookLoginButton onSuccess={onSuccess ? onSuccess : () => {}} />

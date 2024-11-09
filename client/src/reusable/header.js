@@ -310,9 +310,9 @@ const Header = ({ loadingAuth }) => {
                       </Button>
                       <Avatar
                         src={
-                          globalUser.profile
-                            ? globalUser.external
-                              ? globalUser.profile
+                          globalUser?.profile
+                            ? globalUser?.external
+                              ? globalUser?.profile
                               : `${publicRuntimeConfig.REACT_APP_BUCKET}/profile-pictures/${globalUser?.profile}`
                             : `/assets/sampleUser.jgp`
                         }

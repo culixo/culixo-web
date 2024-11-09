@@ -11,7 +11,7 @@ const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
-  process.env.GOOGLE_REDIRECT_URI
+  "postmessage" //process.env.GOOGLE_REDIRECT_URI //// This is used to indicate that the response is sent back to your server
 );
 
 const createLoginToken = async (user, statusCode, req, res) => {
@@ -288,7 +288,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   //Generate Random Token
   const resetTokenObj = user.createResetPasswordToken();
   await user.save({ validateBeforeSave: false }); //Saving only 2 Fields
-
+  console.log(resetTokenObj);
   //Sending Email
   const homepage = `${process.env.APP_URL}`;
   try {

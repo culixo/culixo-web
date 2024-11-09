@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const removeS3Object = require("../utils/removeS3Object");
 
 const User = require("../models/user");
 
@@ -44,7 +45,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     if (req.user.profile) deletedImage = req.user.profile;
     user.profile = profileName[profileName.length - 1];
   }
-  if (req.body.phoneNumber !== undefined) {
+  if (req.body.phoneNumber) {
     user.phoneNumber = req.body.phoneNumber;
     user.phoneCode = req.body.phoneCode;
   }

@@ -23,7 +23,7 @@ export default function ForgetPasswordPage({ onClose }) {
   const { user: globaluser } = useContext(GlobalContext);
 
   if (globaluser !== null && globaluser.token !== undefined) {
-    router.push("/");
+    router.push("/setting");
     //return <Loading />;
   }
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,7 @@ export default function ForgetPasswordPage({ onClose }) {
       errorMessage: "",
     },
   });
-  const [foretPasswordSuccess, setForgetPasswordSuccess] = useState(true);
+  const [foretPasswordSuccess, setForgetPasswordSuccess] = useState(false);
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
