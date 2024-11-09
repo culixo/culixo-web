@@ -7,7 +7,7 @@ module.exports = class SendEmail {
     this.name = user.name;
     this.url = url;
     this.homepage = homepageLink;
-    this.from = `${process.env.platform} <${process.env.EMAIL_FROM}>`;
+    this.from = `${process.env.PLATEFORM} <${process.env.EMAIL_FROM}>`;
   }
   createTransport() {
     return nodemailer.createTransport({
@@ -27,7 +27,7 @@ module.exports = class SendEmail {
       subject,
       homepage: this.url,
       admin: process.env.EMAIL_FROM,
-      platform: process.env.platform,
+      platform: process.env.PLATEFORM,
     });
     //Email Option
     const mailOptions = {
@@ -35,14 +35,14 @@ module.exports = class SendEmail {
       to: this.to,
       subject: subject,
       html: html,
-      text: htmlToText.fromString(html),
+      text: htmlToText.htmlToText(html),
     };
     //send Email
     await this.createTransport().sendMail(mailOptions);
   }
 
   async sendWelcome() {
-    await this.send("welcome", `Welcome To ${process.env.platform} Family`);
+    await this.send("welcome", `Welcome To ${process.env.PLATEFORM} Family`);
   }
   async sendPasswordReset() {
     await this.send("passwordReset", "Your Password Reset Token");

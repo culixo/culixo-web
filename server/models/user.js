@@ -121,13 +121,18 @@ UserSchema.methods.createEmailVerificationToken = function () {
   };
 };
 UserSchema.methods.createResetPasswordToken = function () {
-  const resetToken = crypto.randomBytes(32).toString("hex");
+  const resetToken = Math.floor(1000 + Math.random() * 9000).toString(); // Generates a 4-digit code
+
+  const expires = Date.now() + 60 * 60 * 1000;
   this.passwordResetToken = crypto
     .createHash("Sha256")
     .update(resetToken)
     .digest("hex");
-  this.passwordResetExpires = Date.now() + 60 * 60 * 1000;
-  return resetToken;
+  this.passwordResetExpires = expires;
+  return {
+    token: resetToken,
+    expires: expires,
+  };
 };
 
 let User;

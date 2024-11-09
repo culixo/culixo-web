@@ -24,7 +24,7 @@ export default function SignUp({ onSuccess }) {
   const { user: globaluser, setAuth } = useContext(GlobalContext);
 
   if (globaluser !== null && globaluser.token !== undefined) {
-    router.push("/");
+    router.push("/setting");
     //return <Loading />;
   }
   const [step, setStep] = useState(1);
@@ -42,19 +42,19 @@ export default function SignUp({ onSuccess }) {
     password: "",
   });
 
-  const SubmitHandler = async () => {
+  const SubmitHandler = async (bodyData) => {
     setError({
       status: false,
       message: "",
     });
     if (
-      user.firstName === "" ||
-      user.lastName === "" ||
-      user.email === "" ||
+      bodyData.firstName === "" ||
+      bodyData.lastName === "" ||
+      bodyData.email === "" ||
       !/(?:[a-z0-9!#$%&'*/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
-        user.email
+        bodyData.email
       ) ||
-      user.password === ""
+      bodyData.password === ""
     ) {
       setError({
         status: true,
@@ -66,17 +66,16 @@ export default function SignUp({ onSuccess }) {
     try {
       setLoading(true);
       let body = {
-        ...user,
-        name: user.firstName + " " + user.lastName,
+        ...bodyData,
+        name: bodyData.firstName + " " + bodyData.lastName,
       };
-      if (body.profile !== null) {
-        let formData = new FormData();
-        Object.keys(body).map((key) => {
-          formData.append(key, body[key]);
-          return key;
-        });
-        body = formData;
-      }
+      let formData = new FormData();
+      Object.keys(body).map((key) => {
+        formData.append(key, body[key]);
+        return key;
+      });
+      body = formData;
+
       const result = await axios.post("/users/signup", body);
 
       if (result.data.success) {
@@ -102,6 +101,7 @@ export default function SignUp({ onSuccess }) {
 
   return step === 1 ? (
     <Step1Form
+      data={user}
       loading={loading}
       error={error.status}
       errorMessage={error.message}
@@ -118,6 +118,7 @@ export default function SignUp({ onSuccess }) {
     />
   ) : (
     <Step2Form
+      data={user}
       loading={loading}
       error={error.status}
       errorMessage={error.message}
