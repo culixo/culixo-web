@@ -59,7 +59,7 @@ function GoogleButton({ onSuccess }) {
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => handleLogin(codeResponse),
     onError: (err) => onFailure(err),
-    scope: "profile email",
+    //scope: "profile email",
     flow: "auth-code",
     redirect_uri: publicRuntimeConfig.REACT_APP_GOOGLE_REDIRECT_URI,
   });
@@ -75,7 +75,7 @@ function GoogleButton({ onSuccess }) {
           color: "common.dark100",
           backgroundColor: "common.light100",
           borderRadius: "50px",
-          fontWeight: 700,
+          fontWeight: 400,
           textTransform: "none",
           boxShadow: "none",
           p: "8px",
